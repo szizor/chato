@@ -9,7 +9,7 @@ set :use_sudo, false
 set :user, "deploy"
 set :executable_file, "index.js"
 
-role :app, "ec2-54-242-71-44.compute-1.amazonaws.com"
+role :app, "ec2-54-242-20-157.compute-1.amazonaws.com"
 
 namespace :deploy do
   task :start do ; end
