@@ -41,4 +41,5 @@ end
 
 after "deploy:update_code" do
   npm.install
+  deploy.restart
 end
