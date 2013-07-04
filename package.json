@@ -1,11 +1,11 @@
 {
-	"name": "chato",
-	"version": "0.0.1",
-	"description": "the best of the chatos",
-	"dependencies": {
+  "name": "chato",
+  "version": "0.0.1",
+  "description": "the best of the chatos",
+  "dependencies": {
     "express": "latest",
-		"socket.io": "latest",
+    "socket.io": "latest",
     "sequelize": "latest"
-	},
-	"author": "freshout"
+  },
+  "author": "freshout"
 }
