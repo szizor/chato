@@ -16,11 +16,11 @@ namespace :deploy do
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     begin
-      run "cd #{release_path} && forever stop #{executable_file}"
+      run "cd #{release_path} && sudo forever stop #{executable_file}"
     rescue
     end
 
-    run "cd #{release_path} && forever start #{executable_file}"
+    run "cd #{release_path} && sudo forever start #{executable_file}"
   end
 end
 
