@@ -1,5 +1,6 @@
 set :application, "chato"
 set :repository,  "git@github.com:freshout-dev/chato.git"
+set :branch, "teama"
 
 set :deploy_to, "/home/deploy/chato"
 set :scm, :git
@@ -9,7 +10,7 @@ set :use_sudo, false
 set :user, "deploy"
 set :executable_file, "index.js"
 
-role :app, "ec2-54-242-20-157.compute-1.amazonaws.com"
+role :app, "54.242.20.157"
 
 namespace :deploy do
   task :start do ; end
