@@ -9,6 +9,7 @@ default_run_options[:pty] = true
 set :use_sudo, false
 set :user, "deploy"
 set :executable_file, "index.js"
+set :keep_releases, 5
 
 role :app, "54.235.15.124"
 
@@ -35,12 +36,12 @@ namespace :npm do
   task :install, :roles => :app do
     npm.create_symlink
     shared_dir = File.join(shared_path, 'node_modules')
-    run "cd #{release_path} && npm install"
+    run "cd #{release_path} && npm install >> npm_install.log 2>&1"
   end
 end
-
 
 after "deploy:update_code" do
   npm.install
   deploy.restart
+  deploy.cleanup
 end
