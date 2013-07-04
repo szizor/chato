@@ -8,7 +8,7 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 set :use_sudo, false
 set :user, "deploy"
-set :executable_file, "index.js"
+set :executable_file, "server.js"
 set :keep_releases, 5
 
 role :app, "54.242.20.157"
