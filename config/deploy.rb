@@ -1,8 +1,10 @@
 set :application, "chato"
 set :repository,  "git@github.com:freshout-dev/chato.git"
 
-set :deploy_to, "/#{application}"
+set :deploy_to, "/home/deploy/chato"
 set :scm, :git
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
 set :use_sudo, false
 set :user, "deploy"
 set :executable_file, "index.js"
