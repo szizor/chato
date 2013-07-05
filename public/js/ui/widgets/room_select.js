@@ -1,6 +1,6 @@
 Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
 
-    html : '<div class="room-select-screen screen show">\
+    html : '<div class="room-select-screen screen">\
                 <div class="page-container">\
                   <div class="page-content">\
                       <div class="chato-logo">\
@@ -35,10 +35,11 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
             var _this = this;
             Chato.UI.Widget.prototype.init.apply(this, [args]);
             socket.on("channels", function(data){
+              console.log(data)
               _this.fillSelect(data.channels);
             });
 
-            
+
             this.refresh();
 
         },
@@ -54,7 +55,7 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
               //              {"room": {"id" : "2", "name" : "superheroes", "roles": ["superman", "batman", "ironman"]}}\
               //            ]';
               var rooms = JSON.parse(JSON.stringify(roomData));
-   
+
               for(var i = 0; i < rooms.length; i++) {
                   var opt = document.createElement('option');
                   opt.innerHTML = rooms[i].name;
@@ -77,7 +78,7 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
                               rolesSelect.appendChild(opt);
                           }
                           $('.rolename').removeClass('disabled');
-                          $('#roles').removeClass('disabled');   
+                          $('#roles').removeClass('disabled');
                           document.getElementById('roles').selectedIndex = -1;
                       }
                   }
@@ -87,7 +88,10 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
                   _this.selectedRole = this.options[this.selectedIndex].text;
               });
               $(".btn-play").click(function() {
-
+                _this.parent.dispatch('play', {
+                  channel: _this.selectedRoom,
+                  name: _this.selectedRole
+                });
                 console.log('call to room');
               });
             //}//win

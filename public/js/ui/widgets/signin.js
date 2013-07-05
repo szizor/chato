@@ -57,6 +57,8 @@ Class(Chato.UI, 'SignIn').inherits(Chato.UI.Widget)({
                 if ( data == "ok" ) {
                   alert("login ok")
                   // TODO : redirect to main page
+                  _this.parent.roomSelect.element.addClass('show');
+                  window.userID = id;
                 } else {
                   alert("The username or password is wrong");
                 }
