@@ -6,6 +6,7 @@ var users = {};
 BASE_PATH = process.cwd();
 
 require(BASE_PATH + '/vendor/neon/neon.js');
+require(BASE_PATH + '/vendor/NodeSupport.js');
 require(BASE_PATH + '/lib/Player.js');
 
 app.get('/', function(req, res){
