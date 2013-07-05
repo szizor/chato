@@ -1,23 +1,7 @@
 
-var screens = {
-    splash: $('.splash-screen'),
-    register: $('.register-screen'),
-    signin: $('.sign-in-screen')
-};
+$(function() {
 
-/* splash */
-var registerBtn = screens.splash.find('.btn-register');
-var signinBtn = screens.splash.find('.btn-singin');
+    window.splashManager = new Chato.UI.SplashManager({});
+    $(document.body).append( splashManager.element );
 
-registerBtn.bind('click', function (ev) {
-    screens.register.addClass('show');
-});
-signinBtn.bind('click', function (ev) {
-    screens.signin.addClass('show');
-});
-
-
-/* back */
-$('.back').bind('click', function (ev) {
-    $(this).parents('.screen').removeClass('show');
 });

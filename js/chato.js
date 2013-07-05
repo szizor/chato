@@ -1,3 +1,2 @@
 var Chato = {};
-
 Chato.UI = {};
