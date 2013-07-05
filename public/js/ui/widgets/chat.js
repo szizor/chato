@@ -21,7 +21,7 @@ Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
                     <div class="user-information row">\
                         <div class="span4">\
                             <p class="text-left">\
-                                <strong class="user-name">Pepito</strong>\
+                                <strong class="user-name"></strong>\
                                 <span class="user-score">500 pts.</span>\
                             </p>\
                         </div>\
@@ -43,12 +43,15 @@ Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
             this.inputMessageContainer = this.element.find('.user-input-message');
             this.sendMessageButton = this.element.find('.send-button');
             this.cancelMessageButton = this.element.find('.cancel-button');
+            this.userNameContainer = this.element.find('.user-name');
 
             socket.emit('join', {
                 userId: this.userId,
                 channel: this.channel,
                 name: this.name
             });
+
+            this.userNameContainer.html(this.name);
 
             this.bindEvents();
         },
@@ -93,7 +96,8 @@ Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
                 channel: this.channel,
                 message: messageToSend,
                 targetUserId: null,
-                isMaster: this.isMaster
+                isMaster: this.isMaster,
+                name: this.name
             });
             this.inputMessageContainer.val('');
         },
@@ -104,7 +108,8 @@ Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
             var userMessage = new Chato.UI.UserMessage({
                 id: 'userMessage' + Date.now().toString().replace('.',''),
                 userId: data.userId || 'server',
-                content: data.message
+                content: data.message,
+                name: data.name
             });
             this.conversation.push(userMessage);
             this.appendChild(userMessage);
