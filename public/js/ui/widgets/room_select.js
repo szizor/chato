@@ -32,7 +32,7 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
             var _this = this;
             Chato.UI.Widget.prototype.init.apply(this, [args]);
             socket.on("channels", function(data){
-
+              console.log(data);
             });
 
             window.onload = function(){

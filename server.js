@@ -50,15 +50,12 @@ app.use(express.static(__dirname + '/public'));
 // });
 
 
-var io = require('socket.io').listen(app.listen(port));
+io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
-<<<<<<< HEAD
-    socket.emit('message', { message: 'welcome to the chat' });
-=======
+
     console.log('socketid: ' + socket.id);
     socket.emit('message', { message: 'Welcome to text adventurers' });
->>>>>>> 9e79fe05f00031714a0ca573661006e8d315bd15
 
     socket.on('create', function (data) {
         var channel = new Channel({
