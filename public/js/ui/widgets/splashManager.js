@@ -37,6 +37,7 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
                 })
             );
             this.roomSelect.render(this.element);
+            this.roomSelect.element.addClass('show');
             this.play = function(ev) {
                 var timestamp =  Date.now().toString().replace('.','');
                 var chat = new Chato.UI.Chat({

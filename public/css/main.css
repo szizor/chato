@@ -329,11 +329,20 @@ textarea {
 .conversation{ margin-bottom: 10px; }
 .user-message{
     background: #FAFAFA;
-    padding: 5px;
+    padding: 10px 20px;
     display: block;
     border: 1px solid #eee;
     margin-bottom: 1px;
+    font-size: 16px;
+    line-height: 1.5em;
 }
-.chat-controls input{ 
+.chat-controls {
+    padding: 10px 20px;
+}
+.chat-controls input{
     height: 40px;
 }
+.user-information {
+    padding: 20px
+}
+.user-information .span1 {display: none}
