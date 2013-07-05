@@ -11,7 +11,6 @@ app.get("/", function(req, res){
 	res.render("page");
 });
 
-
 var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
