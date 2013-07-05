@@ -11,7 +11,7 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
                         <div class="error palette-alizarin"></div>\
                         <div class="control-group">\
                             <span class="fui-user"></span>\
-                            <input type="email" value="" placeholder="Username" class="span3 username">\
+                            <input type="text" value="" placeholder="Username" class="span3 username">\
                         </div>\
                         <div class="control-group">\
                             <span class="fui-lock"></span>\

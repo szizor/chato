@@ -306,14 +306,14 @@ textarea {
 
 /**************** chato *******************/
 
-.page-container  { 
+.page-container  {
     /*border: 1px solid #999;
-    box-shadow: inset 0px 0px 100px #999; 
+    box-shadow: inset 0px 0px 100px #999;
     width: 440px;*/
     padding: 20px;
 }
-.page-content  { 
-    margin: 0 auto;
+.page-content  {
+    margin: 20px auto 0;
     width: 220px;
     text-align: center;
 }
