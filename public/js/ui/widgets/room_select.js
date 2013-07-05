@@ -65,6 +65,7 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
 
               document.getElementById('select_unselect').selectedIndex = -1;
 
+
               $('#select_unselect').change(function() {
                   _this.selectedRoom = this.options[this.selectedIndex].text;
                   for(var i = 0; i < rooms.length; i++) {
