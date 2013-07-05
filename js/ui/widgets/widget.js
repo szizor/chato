@@ -1,5 +1,5 @@
 Class(Chato.UI, 'Widget').includes(CustomEventSupport, NodeSupport)({
-    elementClass: 'tokroom-widget',
+    elementClass: 'chato-widget',
     html: '<div></div>',
 
     prerenderUrl: function (url, cssClass) {
