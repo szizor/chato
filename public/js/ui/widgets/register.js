@@ -57,7 +57,7 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
             socket.on('response', function (data, id) {
                 if ( data == "ok" ) {
                     console.log("register ok")
-                    _this.parent.roomSelect.element.addClass('show');
+                    _this.parent.roomSelect.element.eq(0).addClass('show');
                     _this.element.removeClass('show');
                 } else {
                     _this.error.text("The username is in use").addClass('show');

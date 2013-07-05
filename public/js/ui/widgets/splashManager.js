@@ -48,6 +48,8 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
                 });
                 _this.appendChild(chat);
                 chat.render(_this.element);
+                _this.roomSelect.element.removeClass('show');
+                _this.splash.element.removeClass('show');
                 chat.element.addClass('screen show');
             };
 
