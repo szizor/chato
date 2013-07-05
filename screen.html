@@ -19,9 +19,56 @@
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script type='text/javascript'>
+        
           window.onload = function(){
+            
+            var roomSelect = document.getElementById('select_unselect');
+            var rolesSelect = document.getElementById('roles');
+            
+            var myJSON = '[\
+                            {"room": {"id" : "1", "name" : "fringe", "roles": ["walter", "olivia", "fbi"]}},\
+                            {"room": {"id" : "2", "name" : "superheroes", "roles": ["superman", "batman", "ironman"]}}\
+                          ]';
+            var rooms = JSON.parse(myJSON);
+ 
+            
+            //console.log('x', roomSelect);
+            for(var i = 0; i < rooms.length; i++) {
+                //console.log(rooms[i].room.name);
+                var opt = document.createElement('option');
+                opt.innerHTML = rooms[i].room.name;
+                opt.value = rooms[i].room.name;
+                roomSelect.appendChild(opt);
+            }
+
             document.getElementById('select_unselect').selectedIndex = -1;
+
+            $('#select_unselect').change(function() {
+                var roomName = this.options[this.selectedIndex].text;
+                for(var i = 0; i < rooms.length; i++) {
+                    if (roomName == rooms[i].room.name) {
+                        //console.log(rooms[i].room);
+                        var roles = rooms[i].room.roles;
+                        //console.log(roles);
+                        $('#roles > option').remove();
+                        for(var j = 0; j < roles.length; j++) {
+                            var opt = document.createElement('option');
+                            opt.innerHTML = roles[j];
+                            opt.value = roles[j];
+                            rolesSelect.appendChild(opt);
+                        }
+                        $('.rolename').removeClass('disabled');
+                        $('#roles').removeClass('disabled');   
+                        document.getElementById('roles').selectedIndex = -1;
+                    }
+                }
+            });
+            $('#roles').change(function() {
+                $('.select-button').show();
+            });
+
           }
+            
         </script>
     </head>
     <body>
@@ -34,36 +81,39 @@
             <div class="page-content">
                 
                 <div class="logo">
+                  <img src="flatui/images/icons/Infinity-Loop@2x.png" alt="Infinity-Loop">
                   <dl class="palette palette-alizarin">
                     <dt>ROLE CHAT</dt>
                   </dl>
-                  <dl class="palette palette-pomegranate">
+                  <!--  <dl class="palette palette-pomegranate">
                     <dd>Chat with roles</dd>
-                  </dl>
+                  </dl> -->
                 </div>
                 
 
                 <form action="">
 
-                    <div class="button">Select your room</div>
+                    <p>Select your room</p>
 
                     <select id="select_unselect">
-                      <option value="fringe">Fringe</option>
+                      <!-- <option value="fringe">Fringe</option>
                       <option value="heroes">Heroes</option>
                       <option value="politics">Politics</option>
-                      <option value="tv">TV</option>
+                      <option value="tv">TV</option> -->
                     </select>
 
-                    <p>Choose your username</p>
+                    <p class="rolename disabled" class>Choose your role</p>
 
-                    <select name="herolist" value="X-Men" class="select-block span3">
-                      <option value="walter" selected="selected">Walter</option>
+                    <select id="roles" class="select-block span3 disabled">
+                      <!-- <option value="walter" selected="selected">Walter</option>
                       <option value="olivia">Olivia</option>
-                      <option value="fbi">FBI</option>
+                      <option value="fbi">FBI</option> -->
                     </select>
 
                     <!-- <input type="text" name="fname"> -->
-
+                    <div class="select-button">
+                      <a href="#jesus" class="btn btn-large btn-block btn-primary">Play</a>
+                    </div>
                 </form>
                 </div>
             </div>
