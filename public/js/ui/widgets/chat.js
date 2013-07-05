@@ -2,16 +2,14 @@ Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
 
     html : '<div class="row chat container">\
                 <div class="span5 offset7">\
-                    <div class="information row">\
-                        <header>\
-                            <h1>Current conversation</h1>\
-                        </header>\
-                    </div>\
+                     <header class="flex">\
+                        <h3 class="title auto">Current conversation</h3>\
+                    </header>\
                     <div class="conversation row container">\
                     </div>\
                     <div class="chat-controls row">\
                         <div class="">\
-                            <input type="text" class="user-input-message" placeholder="What\'d you do?">\
+                            <input type="text" class="user-input-message span3" placeholder="What\'d you do?">\
                         </div>\
                         <div class="">\
                             <button class="btn btn-mini btn-primary send-button" type="button"><span class="fui-check"></span></button>\

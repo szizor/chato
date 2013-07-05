@@ -2,28 +2,27 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
 
     html : '<div class="room-select-screen screen">\
                 <div class="container">\
-                  <header class="flex">\
-                    <h3 class="title auto">Role Chat</h3>\
-                </header>\
-                  <div class="page-content">\
-                      <div class="chato-logo">\
-                        <img src="flatui/images/icons/logo.png" alt="logo">\
-                      </div>\
-                      <form action="">\
-                          <p>Select your room</p>\
-                          <select id="select_unselect">\
-                          </select>\
-                          <p class="rolename disabled" class>Choose your role</p>\
-                          <select id="roles" class="select-block span3 disabled">\
-                          </select>\
-                          <div class="select-button">\
-                            <div class="btn btn-large btn-block btn-primary btn-play">Play</div>\
-                          </div>\
-                      </form>\
-                      </div>\
-                  </div>\
+                    <header class="flex">\
+                        <h3 class="title auto">Role Chat</h3>\
+                    </header>\
+                    <div class="page-content">\
+                        <div class="chato-logo">\
+                            <img src="flatui/images/icons/logo.png" alt="logo">\
+                        </div>\
+                        <form action="">\
+                            <p>Select your room</p>\
+                            <select id="select_unselect">\
+                            </select>\
+                            <p class="rolename disabled" class>Choose your role</p>\
+                            <select id="roles" class="select-block span3 disabled">\
+                            </select>\
+                            <div class="select-button">\
+                                <div class="btn btn-large btn-block btn-primary btn-play">Play</div>\
+                            </div>\
+                        </form>\
+                    </div>\
                 </div>\
-              </div>\
+            </div>\
             ',
 
     prototype : {
