@@ -12,7 +12,7 @@ Class(Chato.UI, 'SignIn').inherits(Chato.UI.Widget)({
                   <form action="">\
                     <div class="control-group">\
                       <span class="fui-user"></span>\
-                      <input type="email" value="" placeholder="Username" class="span3 username">\
+                      <input type="text" value="" placeholder="Username" class="span3 username">\
                     </div>\
                     <div class="control-group">\
                       <span class="fui-lock"></span>\

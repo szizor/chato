@@ -1,13 +1,13 @@
 Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
 
     html : '<div class="room-select-screen screen">\
-                <div class="page-container">\
+                <div class="container">\
+                  <header class="flex">\
+                    <h3 class="title auto">Role Chat</h3>\
+                </header>\
                   <div class="page-content">\
                       <div class="chato-logo">\
                         <img src="flatui/images/icons/logo.png" alt="logo">\
-                        <dl class="palette palette-alizarin">\
-                          <dt>ROLE CHAT</dt>\
-                        </dl>\
                       </div>\
                       <form action="">\
                           <p>Select your room</p>\

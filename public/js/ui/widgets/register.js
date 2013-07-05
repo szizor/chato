@@ -11,7 +11,7 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
                         <div class="error palette-alizarin"></div>\
                         <div class="control-group">\
                             <span class="fui-user"></span>\
-                            <input type="email" value="" placeholder="Username" class="span3 username">\
+                            <input type="text" value="" placeholder="Username" class="span3 username">\
                         </div>\
                         <div class="control-group">\
                             <span class="fui-lock"></span>\
@@ -58,12 +58,8 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
                 if ( data.type == "ok" ) {
                     console.log("register ok")
                     _this.parent.roomSelect.element.eq(0).addClass('show');
-<<<<<<< HEAD
                     // _this.element.removeClass('show');
                     window.userID = data.userId;
-=======
-                    _this.element.removeClass('show');
->>>>>>> cc4dd49ef3918f58f90384eef064dc28792576fd
                 } else {
                     _this.error.text("The username is in use").addClass('show');
                     var t = setTimeout(function() {
