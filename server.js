@@ -55,7 +55,8 @@ var io = require('socket.io').listen(app.listen(port));
 io.sockets.on('connection', function (socket) {
     console.log(socket.id);
     clients[socket.id] = socket;
-    socket.emit('message', { message: 'welcome to the chat' });
+    socket.emit('message', { message: 'Welcome to text adventurers' });
+
     socket.on('create', function (data) {
         var channel = new Channel({
             name : data.channel,
@@ -103,6 +104,7 @@ io.sockets.on('connection', function (socket) {
             channels[data.channel].sendMessage(data);
         }
     });
+
     socket.on('register', function (data) {
       var valid = User.validate(data.username);
       if (valid) {
@@ -116,6 +118,7 @@ io.sockets.on('connection', function (socket) {
         io.sockets.emit('response', "error");
       }
     });
+
     socket.on('login', function (data) {
       var valid = User.auth(data);
       if (valid) {
