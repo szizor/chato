@@ -46,11 +46,13 @@ app.get("/", function(req, res){
 io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
-    debugger;
+    socket.join('123');
     socket.emit('message', { message: 'welcome to the chat' });
     socket.on('send', function (data) {
+        console.log(channels[data.channelId]);
         channels[data.channelId].sendMessage(data);
 //        io.sockets.emit('message', data);
+        //io.sockets.in('123').emit('message', data);
     });
 });
 
