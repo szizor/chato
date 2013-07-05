@@ -42,6 +42,7 @@ body {height: 100%; padding: 0; overflow: hidden}
   -webkit-transition: left 200ms ease-out;
   -moz-transition: left 200ms ease-out;
   transition: left 200ms ease-out;
+  display: none;
 }
   .screen header {background-color: #34495e}
   .screen header .btn {padding: 5px 12px 6px; margin-top: 6px}
@@ -52,9 +53,9 @@ body {height: 100%; padding: 0; overflow: hidden}
   .screen-body .error {position: absolute; top: 0; left: 0; width: 100%; padding: 8px 20px 10px; color: #fff; display: none}
   .screen-body .error.show {display: block}
 
-.screen.show {left: 0; display: block}
+.screen.show {left: 0; display: block;}
 
-.splash-screen {display: block}
+.splash-screen {}
   .splash-screen > .container {height: 100%}
   .splash-screen .buttons-holder {
     position: absolute; bottom: 20px; width: 100%;
@@ -74,3 +75,5 @@ body {height: 100%; padding: 0; overflow: hidden}
   .sign-in-screen .control-group {position: relative}
     .sign-in-screen .control-group span {position: absolute; top: 13px; width: 40px; text-align: center; height: 100%; z-index: 1}
     .sign-in-screen .control-group input {padding: 20px 0 20px 30px}
+
+.user-message-controls {display: none}
