@@ -128,16 +128,16 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('channels', function (data) {
-        var result = {};
+        var result = [];
         Object.keys(channels).forEach(function (id) {
-            result[id] = {
+            result.push({
                 id : channels[id].id,
                 name : channels[id].name,
                 theme : channels[id].theme,
                 roles : channels[id].roles
-            };
+            });
         });
-        socket.emit('channels', result);        
+        socket.emit('channels', {channels : []});        
     });
 });
 
