@@ -1,6 +1,6 @@
 Class(Chato.UI, 'Splash').inherits(Chato.UI.Widget)({
 
-    html : '<div class="splash-screen screen show">\
+    html : '<div class="splash-screen screen">\
                 <div class="container">\
                   <div class="buttons-holder">\
                     <a href="#" class="btn-register btn btn-block btn-large">\
