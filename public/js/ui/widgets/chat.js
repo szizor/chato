@@ -96,7 +96,7 @@ Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
                 channel: this.channel,
                 message: messageToSend,
                 targetUserId: null,
-                isMaster: this.isMaster
+                isMaster: this.isMaster,
                 name: this.name
             });
             this.inputMessageContainer.val('');
