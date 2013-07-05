@@ -25,75 +25,21 @@
   <script src="js/lib/node_support.js"></script>
   <script src="js/lib/custom_event_support.js"></script>
   <script src="js/chato.js"></script>
+  <script src="js/ui/widgets/widget.js"></script>
 </head>
 <body>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div class="splash-screen screen show">
-    <div class="container">
-      <div class="buttons-holder">
-        <a href="#" class="btn-register btn btn-block btn-large">
-          <span class="fui-plus pull-left"></span>
-          <span class="lbl">Register</span>
-          <span class="fui-arrow-right pull-right"></span>
-        </a>
-        <a href="#" class="btn-singin btn btn-block btn-large">
-          <span class="fui-user pull-left"></span>
-          <span class="lbl">Sing In</span>
-          <span class="fui-arrow-right pull-right"></span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="register-screen screen">
-    <div class="container">
-      <header class="flex">
-        <a href="#" class="back btn auto">Welcome</a>
-        <h3 class="title auto">Register</h3>
-        <a href="#" class="done btn btn-success auto">Done</a>
-      </header>
-      <div class="screen-body">
-        <form action="">
-          <label for="">
-            <span class="fui-user"></span>
-            <input type="text" value="" placeholder="Username" class="span3">
-          </label>
-          <label for="">
-            <span class="fui-lock"></span>
-            <input type="text" value="" placeholder="Password" class="span3">
-          </label>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="sign-in-screen screen show">
-    <div class="container">
-      <header class="flex">
-        <a href="#" class="back btn auto">Welcome</a>
-        <h3 class="title auto">Sing In</h3>
-        <a href="#" class="done btn btn-success auto">Sing In</a>
-      </header>
-      <div class="screen-body">
-        <form action="">
-          <label for="">
-            <span class="fui-user"></span>
-            <input type="text" value="" placeholder="Username" class="span3">
-          </label>
-          <label for="">
-            <span class="fui-lock"></span>
-            <input type="text" value="" placeholder="Password" class="span3">
-          </label>
-        </form>
-      </div>
-    </div>
-  </div>
-
   <script src="js/vendor/jquery-1.10.1.min.js"></script>
   <script src="js/plugins.js"></script>
+
+  <script src="js/ui/widgets/splash.js"></script>
+  <script src="js/ui/widgets/register.js"></script>
+  <script src="js/ui/widgets/signin.js"></script>
+  <script src="js/ui/widgets/splashManager.js"></script>
+
   <script src="js/main.js"></script>
 </body>
 </html>
