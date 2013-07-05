@@ -7,7 +7,9 @@ BASE_PATH = process.cwd();
 
 require(BASE_PATH + '/vendor/neon/neon.js');
 require(BASE_PATH + '/vendor/NodeSupport.js');
+require(BASE_PATH + '/lib/App.js');
 require(BASE_PATH + '/lib/Player.js');
+require(BASE_PATH + '/lib/Channel.js');
 
 app.get('/', function(req, res){
   res.send('lets play');
