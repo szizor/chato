@@ -88,7 +88,7 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
                   _this.selectedRole = this.options[this.selectedIndex].text;
               });
               $(".btn-play").click(function() {
-                _this.parent.dispatch('play', {
+                splashManager.play({
                   channel: _this.selectedRoom,
                   name: _this.selectedRole
                 });

@@ -37,18 +37,19 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
                 })
             );
             this.roomSelect.render(this.element);
-            this.roomSelect.bind('play', function(ev) {
+            this.play = function(ev) {
                 var timestamp =  Date.now().toString().replace('.','');
                 var chat = new Chato.UI.Chat({
                     userId: window.userID,
                     name: ev.name,
-                    element: $('.chat'),
                     socket: socket,
                     channel: ev.channel,
                     isMaster: false
                 });
+                _this.appendChild(chat);
                 chat.render(_this.element);
-            });
+                chat.element.addClass('screen show');
+            };
 
             this.bindEvents();
         },
