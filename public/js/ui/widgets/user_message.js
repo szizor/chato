@@ -15,8 +15,6 @@ Class(Chato.UI, 'UserMessage').inherits(Chato.UI.Widget)({
         init: function (attributes) {
             Chato.UI.Widget.prototype.init.apply(this, [attributes]);
 
-            console.log(this.content);
-
             this.nicknameContainer = this.element.find('.user-nickname');
             this.messageContentContainer = this.element.find('.user-message-content');
             this.messageControls = this.element.find('.user-message-controls');
@@ -25,7 +23,7 @@ Class(Chato.UI, 'UserMessage').inherits(Chato.UI.Widget)({
 
             // Every message will have an owner -> user
             this.messageContentContainer.html(this.content);
-            this.nicknameContainer.html(this.userId);
+            this.nicknameContainer.html(this.name);
         },
 
         bindElements: function () {
