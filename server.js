@@ -49,6 +49,12 @@ app.get('/login', function(req, res){
   res.render("login");
 });
 
+        var channel = new Channel({
+            name : 'Treasure Hunt',
+            theme : 'Your crew, armed and prepared, arrives at an island where there\'s a big treasure awaiting for you, all of you must compete together to make the right decisions and arrive safely to your destination and comeback alive. Remember this is teamwork and you must address your orders to your captain.',
+            roles : ['The Captain', 'Pirate', 'Fishing Man', 'The Doctor', 'Fortune Teller', 'Biologist', 'Scientific']
+        });
+        channels[channel.name] = channel;
 
 var io = require('socket.io').listen(app.listen(port));
 
