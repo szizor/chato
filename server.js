@@ -5,6 +5,7 @@ var port = 5000;
 BASE_PATH = process.cwd();
 
 require(BASE_PATH + '/vendor/neon/neon.js');
+require(BASE_PATH + '/lib/Player.js');
 
 app.get('/', function(req, res){
   res.send('lets play');
@@ -20,5 +21,4 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-app.listen(port);
 console.log('listening on port:' + port);
