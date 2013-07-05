@@ -42,8 +42,9 @@ body {height: 100%; padding: 0; overflow: hidden}
   -webkit-transition: left 200ms ease-out;
 }
   .screen header {background-color: #34495e}
-  .screen header .btn-back {}
-  .screen header .btn-next {}
+  .screen header .btn {padding: 5px 12px 6px; margin-top: 6px}
+  .screen header .prev {margin-left: 10px}
+  .screen header .next {margin-right: 10px}
   .screen header .title {display: block; color: #1abc9c; text-align: center}
 .screen-body {padding: 0 20px;}
 
@@ -62,12 +63,12 @@ body {height: 100%; padding: 0; overflow: hidden}
 
 /*.register-screen {display: none}*/
 .register-screen .screen-body {padding: 40px 60px 0}
-  .register-screen label {position: relative}
-    .register-screen label span {position: absolute; top: 11px; width: 40px; text-align: center; height: 100%; z-index: 1}
-    .register-screen label input {padding: 20px 0 20px 30px}
+  .register-screen .control-group {position: relative}
+    .register-screen .control-group span {position: absolute; top: 13px; width: 40px; text-align: center; height: 100%; z-index: 1}
+    .register-screen .control-group input {padding: 20px 0 20px 30px}
 
 /*.sign-in-screen {display: none}*/
 .sign-in-screen .screen-body {padding: 40px 60px 0}
-  .sign-in-screen label {position: relative}
-    .sign-in-screen label span {position: absolute; top: 11px; width: 40px; text-align: center; height: 100%; z-index: 1}
-    .sign-in-screen label input {padding: 20px 0 20px 30px}
+  .sign-in-screen .control-group {position: relative}
+    .sign-in-screen .control-group span {position: absolute; top: 13px; width: 40px; text-align: center; height: 100%; z-index: 1}
+    .sign-in-screen .control-group input {padding: 20px 0 20px 30px}
