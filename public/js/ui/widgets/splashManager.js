@@ -57,8 +57,10 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
             });
 
             this.signin.done.bind('click', function (ev) {
-                _this.signin.element.removeClass('show');
-                _this.roomSelect.element.addClass('show');
+                _this.signin.validateInputs();
+
+                //_this.signin.element.removeClass('show');
+                //_this.roomSelect.element.addClass('show');
             });
 
         },

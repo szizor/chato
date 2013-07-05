@@ -1,6 +1,6 @@
 Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
 
-    html : '<div class="room-select-screen screen">\
+    html : '<div class="room-select-screen screen show">\
                 <div class="page-container">\
                   <div class="page-content">\
                       <div class="chato-logo">\
@@ -31,6 +31,9 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
         init : function (args) {
             var _this = this;
             Chato.UI.Widget.prototype.init.apply(this, [args]);
+            socket.on("channels", function(data){
+
+            });
 
             window.onload = function(){
               var roomSelect = document.getElementById('select_unselect');
@@ -75,12 +78,17 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
               $(".btn-play").click(function() {
                 console.log('call to room');
               });
-            }
+            }//win
+            this.refresh();
 
         },
 
         destroy : function destroy () {
             Chato.UI.Widget.prototype.destroy.apply(this);
+        },
+
+        refresh : function refresh () {
+            socket.emit("channels");
         }
     }
 });
