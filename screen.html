@@ -14,7 +14,15 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="flatui/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="flatui/css/flat-ui.css">
+
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script type='text/javascript'>
+          window.onload = function(){
+            document.getElementById('select_unselect').selectedIndex = -1;
+          }
+        </script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -24,14 +32,22 @@
         <!-- Add your site or application content here -->
         <div class="page-container">
             <div class="page-content">
-                <div class="logo">Role Chato</div>
+                
+                <div class="logo">
+                  <dl class="palette palette-alizarin">
+                    <dt>ROLE CHAT</dt>
+                  </dl>
+                  <dl class="palette palette-pomegranate">
+                    <dd>Chat with roles</dd>
+                  </dl>
+                </div>
                 
 
                 <form action="">
 
                     <div class="button">Select your room</div>
 
-                    <select>
+                    <select id="select_unselect">
                       <option value="fringe">Fringe</option>
                       <option value="heroes">Heroes</option>
                       <option value="politics">Politics</option>
@@ -40,8 +56,8 @@
 
                     <p>Choose your username</p>
 
-                    <select>
-                      <option value="walter">Walter</option>
+                    <select name="herolist" value="X-Men" class="select-block span3">
+                      <option value="walter" selected="selected">Walter</option>
                       <option value="olivia">Olivia</option>
                       <option value="fbi">FBI</option>
                     </select>
