@@ -31,6 +31,13 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
             );
             this.signin.render(this.element);
 
+            this.appendChild(
+                new Chato.UI.RoomSelect({
+                    name: 'roomSelect'
+                })
+            );
+            this.roomSelect.render(this.element);
+
             this.bindEvents();
         },
 
@@ -45,6 +52,17 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
                 ev.preventDefault();
                 _this.signin.element.addClass('show');
             });
+
+            this.register.done.bind('click', function (ev) {
+                _this.register.element.removeClass('show');
+                _this.roomSelect.element.addClass('show');
+            });
+
+            this.signin.done.bind('click', function (ev) {
+                _this.signin.element.removeClass('show');
+                _this.roomSelect.element.addClass('show');
+            });
+
         },
 
         destroy : function destroy () {
