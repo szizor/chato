@@ -46,11 +46,11 @@ body {height: 100%; padding: 0; overflow: hidden}
   .screen header .prev {margin-left: 10px}
   .screen header .next {margin-right: 10px}
   .screen header .title {display: block; color: #1abc9c; text-align: center}
-.screen-body {padding: 0 20px;}
+.screen-body {padding: 0 20px; position: relative}
+  .screen-body .error {position: absolute; top: 0; left: 0; width: 100%; padding: 8px 20px 10px; color: #fff; display: none}
+  .screen-body .error.show {display: block}
 
-.screen.show {
-  left: 0;
-}
+.screen.show {left: 0}
 
 .splash-screen {display: block}
   .splash-screen > .container {height: 100%}

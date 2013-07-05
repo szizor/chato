@@ -27,6 +27,7 @@
                 display: inline-block;
             }
         </style>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="js/lib/neon.js"></script>
         <script src="js/lib/custom_event.js"></script>
         <script src="js/lib/node_support.js"></script>
@@ -54,8 +55,19 @@
                         <input type="text" class="user-input-message" placeholder="What'd you do?">
                     </div>
                     <div class="span2">
-                        <button class="btn btn-mini btn-primary" type="button"><span class="fui-check"></span></button>
-                        <button class="btn btn-mini" type="button"><span class="fui-cross"></span></button>
+                        <button class="btn btn-mini btn-primary send-button" type="button"><span class="fui-check"></span></button>
+                        <button class="btn btn-mini cancel-button" type="button"><span class="fui-cross"></span></button>
+                    </div>
+                </div>
+                <div class="user-information row">
+                    <div class="span4">
+                        <p class="text-left">
+                            <strong class="user-name">Pepito</strong>
+                            <span class="user-score">500 pts.</span>
+                        </p>
+                    </div>
+                    <div class="span1">
+                        <button class="btn btn-mini btn-info" type="button"><span class="fui-user"></span></button>
                     </div>
                 </div>
             </div>
@@ -65,15 +77,28 @@
 
 
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script src="js/ui/widgets/widget.js"></script>
+        <script src="js/ui/widgets/user_message.js"></script>
+        <script src="js/ui/widgets/chat_message.js"></script>
+        <script src="js/ui/widgets/chat.js"></script>
         <script>
-            $(function () {
-                console.log('document ready');
+            socket = io.connect('http://localhost:8080');
+            /* USER
+            ** Debe de existir un objecdt user que se le mande al chat widget
+            */
+            /* TODO: Play click
+            */
+            var timestamp =  Date.now().toString().replace('.','');
+            var chat = new Chato.UI.Chat({
+                userId: timestamp,
+                name: 'Name' + timestamp,
+                element: $('.chat'),
+                socket: socket,
+                channel: 'Treasure Hunt',
+                isMaster: false
             });
         </script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

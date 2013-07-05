@@ -59,6 +59,7 @@ app.use(express.static(__dirname + '/public'));
 io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
+
     console.log('socketid: ' + socket.id);
     socket.emit('message', { message: 'Welcome to text adventurers' });
 
@@ -83,7 +84,8 @@ io.sockets.on('connection', function (socket) {
         var channel = channels[data.channel];
         var player = new Player({
             name : data.name,
-            userId : data.userId
+            userId : data.userId,
+            socket : socket
         });
         channel.appendChild(player);
         channel.sendMessage({message : player.name + ' is on the game'})

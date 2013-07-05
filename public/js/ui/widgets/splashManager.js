@@ -37,6 +37,19 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
                 })
             );
             this.roomSelect.render(this.element);
+            this.play = function(ev) {
+                var timestamp =  Date.now().toString().replace('.','');
+                var chat = new Chato.UI.Chat({
+                    userId: window.userID,
+                    name: ev.name,
+                    socket: socket,
+                    channel: ev.channel,
+                    isMaster: false
+                });
+                _this.appendChild(chat);
+                chat.render(_this.element);
+                chat.element.addClass('screen show');
+            };
 
             this.bindEvents();
         },
@@ -52,17 +65,6 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
                 ev.preventDefault();
                 _this.signin.element.addClass('show');
             });
-
-            this.register.done.bind('click', function (ev) {
-                _this.register.element.removeClass('show');
-                _this.roomSelect.element.addClass('show');
-            });
-
-            this.signin.done.bind('click', function (ev) {
-                _this.signin.element.removeClass('show');
-                _this.roomSelect.element.addClass('show');
-            });
-
         },
 
         destroy : function destroy () {
