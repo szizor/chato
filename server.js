@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = 8080;
+var port = 80;
 users = {};
 channels = {};
 
@@ -103,7 +103,7 @@ io.sockets.on('connection', function (socket) {
         });
         channel.sendMessage({message : player.name + ' left the game'})
         channel.removeChild(player);
-        socket.leave(data.channel); 
+        socket.leave(data.channel);
     });
 
     socket.on('send', function (data) {
@@ -145,7 +145,7 @@ io.sockets.on('connection', function (socket) {
                 roles : channels[id].roles
             });
         });
-        socket.emit('channels', {channels : result});        
+        socket.emit('channels', {channels : result});
     });
 });
 
