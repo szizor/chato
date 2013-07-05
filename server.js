@@ -32,8 +32,6 @@ require(BASE_PATH + '/lib/Player.js');
 require(BASE_PATH + '/lib/User.js');
 require(BASE_PATH + '/lib/Channel.js');
 
-channels["123"] = new Channel({ name : "Test", theme : "Testing channel"});
-
 app.set('views', __dirname + '/tpl');
 app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
@@ -55,29 +53,57 @@ app.get('/login', function(req, res){
 var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('message', { message: 'welcome to the chat' });
+    console.log('socketid: ' + socket.id);
+    socket.emit('message', { message: 'Welcome to text adventurers' });
+
     socket.on('create', function (data) {
         var channel = new Channel({
             name : data.channel,
             theme : 'this is a random channel',
             roles : ['batman', 'joker']
         });
+        var player = new Player({
+            userId : data.userId,
+            name : 'master',
+            isMaster : true
+        });
+        channel.appendChild(player);
         channels[channel.name] = channel;
         socket.join(channel.name);
         channel.sendMessage({message : 'channel ' + channel.name + ' created'})
     });
+
     socket.on('join', function (data) {
+        var channel = channels[data.channel];
+        var player = new Player({
+            name : data.name,
+            userId : data.userId
+        });
+        channel.appendChild(player);
+        channel.sendMessage({message : player.name + ' is on the game'})
+        socket.emit('message', {message: channel.theme});
         socket.join(data.channel);
-        channel.sendMessage({message : 'entered ' + channel.name})
     });
+
     socket.on('leave', function (data) {
+        var channel = channels[data.channel];
+        var player = null;
+        channel.children.forEach(function (player) {
+            if (player.userId === data.userId) {
+                player = player;
+            }
+        });
+        channel.sendMessage({message : player.name + ' left the game'})
+        channel.removeChild(player);
         socket.leave(data.channel); 
     });
+
     socket.on('send', function (data) {
         if (channels[data.channel]) {
             channels[data.channel].sendMessage(data);
         }
     });
+
     socket.on('register', function (data) {
       var valid = User.validate(data.username);
       if (valid) {
@@ -86,17 +112,18 @@ io.sockets.on('connection', function (socket) {
           password : data.passwd
         })
         users[user.id] = user;
-        io.sockets.emit('response', "ok");
+        socket.emit('response', "ok", user.id);
       } else {
         io.sockets.emit('response', "error");
       }
     });
+
     socket.on('login', function (data) {
       var valid = User.auth(data);
       if (valid) {
-        io.sockets.emit('auth', "ok");
+        socket.emit('auth', "ok");
       } else {
-        io.sockets.emit('auth', "error");
+        socket.emit('auth', "error");
       }
     });
 });
