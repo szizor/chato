@@ -4,7 +4,7 @@ var port = 8080;
 users = {};
 channels = {};
 
-var getuid = (function generateUid() {
+getuid = (function generateUid() {
             var getUid = function(length){
                 var i, uid, min, max;
 
@@ -29,7 +29,7 @@ require(BASE_PATH + '/vendor/neon/neon.js');
 require(BASE_PATH + '/vendor/NodeSupport.js');
 require(BASE_PATH + '/lib/App.js');
 require(BASE_PATH + '/lib/Player.js');
-//require(BASE_PATH + '/lib/User.js');
+require(BASE_PATH + '/lib/User.js');
 require(BASE_PATH + '/lib/Channel.js');
 
 channels["123"] = new Channel({ name : "Test", theme : "Testing channel"});
@@ -43,7 +43,16 @@ app.get("/", function(req, res){
     res.render("page");
 });
 
-io = require('socket.io').listen(app.listen(port));
+app.get('/register', function(req, res){
+  res.render("register");
+});
+
+app.get('/login', function(req, res){
+  res.render("login");
+});
+
+
+var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
     socket.join('123');
@@ -53,6 +62,27 @@ io.sockets.on('connection', function (socket) {
         channels[data.channelId].sendMessage(data);
 //        io.sockets.emit('message', data);
         //io.sockets.in('123').emit('message', data);
+    });
+    socket.on('register', function (data) {
+      var valid = User.validate(data.username);
+      if (valid) {
+        var user = new User({
+          email : data.username,
+          password : data.passwd
+        })
+        users[user.id] = user;
+        io.sockets.emit('response', "ok");
+      } else {
+        io.sockets.emit('response', "error");
+      }
+    });
+    socket.on('login', function (data) {
+      var valid = User.auth(data);
+      if (valid) {
+        io.sockets.emit('auth', "ok");
+      } else {
+        io.sockets.emit('auth', "error");
+      }
     });
 });
 

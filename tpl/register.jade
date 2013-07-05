@@ -1,0 +1,20 @@
+!!!
+html
+  head
+    title= "Register"
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js')
+    script(src='/user.js')
+    script(src='/socket.io/socket.io.js')
+  body
+
+    .controls
+      .unsername
+        | Name:
+        input#name(style='width:350px;')
+      br
+      .unsername
+        | Pass:
+        input#pass(type="password", style='width:350px;')
+      br
+      input#send(type='button', value='register')
+      input#login(type='hidden', value='login')

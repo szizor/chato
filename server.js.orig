@@ -1,9 +1,10 @@
-var express = require("express");
+var express = require('express');
 var app = express();
 var port = 8080;
-var users = {};
+users = {};
+channels = {};
 
-getuid = (function generateUid() {
+var getuid = (function generateUid() {
             var getUid = function(length){
                 var i, uid, min, max;
 
@@ -28,37 +29,41 @@ require(BASE_PATH + '/vendor/neon/neon.js');
 require(BASE_PATH + '/vendor/NodeSupport.js');
 require(BASE_PATH + '/lib/App.js');
 require(BASE_PATH + '/lib/Player.js');
-require(BASE_PATH + '/lib/User.js');
+//require(BASE_PATH + '/lib/User.js');
 require(BASE_PATH + '/lib/Channel.js');
+
+channels["123"] = new Channel({ name : "Test", theme : "Testing channel"});
+
 app.set('views', __dirname + '/tpl');
 app.set('view engine', "jade");
 app.engine('jade', require('jade').__express);
 app.use(express.static(__dirname + '/public'));
 
+<<<<<<< Updated upstream
 app.get("/", function(req, res){
-	res.render("page");
+    res.render("page");
 });
-
+=======
 app.get('/register', function(req, res){
   res.render("register");
 });
 
+app.get('/login', function(req, res){
+  res.render("login");
+});
 
-var io = require('socket.io').listen(app.listen(port));
+>>>>>>> Stashed changes
+
+io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
-	socket.emit('message', { message: 'welcome to the chat' });
-	socket.on('send', function (data) {
-		io.sockets.emit('message', data);
-	});
-  socket.on('register', function (data) {
-
-    var user = new User({
-      email : data.username,
-      password : data.passwd
-    })
-    users[user.id] = user;
-    io.sockets.emit('response', users);
-  });
+    debugger;
+    socket.emit('message', { message: 'welcome to the chat' });
+    socket.on('send', function (data) {
+        channels[data.channelId].sendMessage(data);
+//        io.sockets.emit('message', data);
+    });
 });
-console.log("Listening on port " + port);
+
+
+console.log('listening on port:' + port);
