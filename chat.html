@@ -18,6 +18,21 @@
         <link rel="stylesheet" href="flatui/bootstrap/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="flatui/css/flat-ui.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <style>
+            .user-message-controls {
+                display: none;
+            }
+            .is-visible {
+                display: inline-block;
+            }
+        </style>
+        <script src="js/lib/neon.js"></script>
+        <script src="js/lib/custom_event.js"></script>
+        <script src="js/lib/node_support.js"></script>
+        <script src="js/lib/custom_event_support.js"></script>
+        <script src="js/chato.js"></script>
+
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -33,43 +48,6 @@
                     </header>
                 </div>
                 <div class="conversation row container">
-                    <div class="user-message">
-                        <span class="user-message-controls is-visible">
-                            <i class="input-icon fui-check-inverted"></i>
-                            <i class="input-icon fui-cross"></i>
-                        </span>
-                        <strong class="user-nickname">Peter:</strong>
-                        <span class="user-message-content">Check if the zombie is dead! You know, really really dead.</span>
-                    </div>
-                    <div class="chat-message">
-                        <span class="chat-message-content muted">Astrid has left the adventure.</span>
-                    <div class="user-message">
-                        <span class="user-message-controls">
-                            <i class="input-icon fui-check-inverted"></i>
-                            <i class="input-icon fui-cross"></i>
-                        </span>
-                        <strong class="user-nickname">Olivia:</strong>
-                        <span class="user-message-content">Really? Zombies are usually dead, they are ZOMBIES.</span>
-                    </div>
-                    <div class="user-message">
-                        <span class="user-message-controls">
-                            <i class="input-icon fui-check-inverted"></i>
-                            <i class="input-icon fui-cross"></i>
-                        </span>
-                        <strong class="user-nickname">Walter:</strong>
-                        <span class="user-message-content">Let's kill a zombie and get a tissue sameple.</span>
-                    </div>
-                    <div class="user-message">
-                        <strong class="user-nickname">Peter:</strong>
-                        <span class="user-message-controls">
-                            <i class="input-icon fui-check-inverted"></i>
-                            <i class="input-icon fui-cross"></i>
-                        </span>
-                        <span class="user-message-content">Good Idea, let's go to that building at the north, they seem to be coming from that way.</span>
-                    </div>
-                    <div class="chat-message">
-                        <span class="chat-message-content muted">Astrid has join the adventure.</span>
-                    </div>
                 </div>
                 <div class="chat-controls row">
                     <div class="span3">
@@ -89,6 +67,11 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script>
+            $(function () {
+                console.log('document ready');
+            });
+        </script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
