@@ -39,11 +39,6 @@ app.get("/", function(req, res){
 	res.render("page");
 });
 
-app.get('/register', function(req, res){
-  res.render("register");
-});
-
-
 var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
