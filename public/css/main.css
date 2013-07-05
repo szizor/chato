@@ -326,3 +326,14 @@ textarea {
 .disabled{opacity: .3; pointer-events: none;}
 .select-button{display: none; margin-top: 15px;}
 
+.conversation{ margin-bottom: 10px; }
+.user-message{
+    background: #FAFAFA;
+    padding: 5px;
+    display: block;
+    border: 1px solid #eee;
+    margin-bottom: 1px;
+}
+.chat-controls input{ 
+    height: 40px;
+}

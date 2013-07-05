@@ -10,10 +10,10 @@ Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
                     <div class="conversation row container">\
                     </div>\
                     <div class="chat-controls row">\
-                        <div class="span3">\
+                        <div class="">\
                             <input type="text" class="user-input-message" placeholder="What\'d you do?">\
                         </div>\
-                        <div class="span2">\
+                        <div class="">\
                             <button class="btn btn-mini btn-primary send-button" type="button"><span class="fui-check"></span></button>\
                             <button class="btn btn-mini cancel-button" type="button"><span class="fui-cross"></span></button>\
                         </div>\
