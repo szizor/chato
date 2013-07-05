@@ -44,9 +44,23 @@ Class(Chato.UI, 'SignIn').inherits(Chato.UI.Widget)({
             });
 
             this.done.bind('click', function (ev) {
-                _this.validateInputs();
+                var valid = _this.validateInputs();
+                if ( valid ) {
+                    socket.emit('login', {
+                        passwd  : _this.password[0].value,
+                        username: _this.username[0].value
+                    });
+                }
             });
 
+            socket.on('auth', function (data, id) {
+                if ( data == "ok" ) {
+                  alert("login ok")
+                  // TODO : redirect to main page
+                } else {
+                  alert("The username or password is wrong");
+                }
+            });
         },
 
         validateInputs : function validateInputs () {
@@ -66,9 +80,11 @@ Class(Chato.UI, 'SignIn').inherits(Chato.UI.Widget)({
 
             if ( pass ) {
                 console.log("send form");
+                return true;
+            } else {
+                console.log("not send  form");
+                return false;
             }
-
-            return this;
         },
 
         destroy : function destroy () {

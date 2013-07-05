@@ -44,10 +44,12 @@ Class(Chato.UI, 'SplashManager').inherits(Chato.UI.Widget)({
         bindEvents : function bindEvents () {
             var _this = this;
             this.registerBtn.bind('click', function (ev) {
+                ev.preventDefault();
                 _this.register.element.addClass('show');
             });
 
             this.signinBtn.bind('click', function (ev) {
+                ev.preventDefault();
                 _this.signin.element.addClass('show');
             });
 
