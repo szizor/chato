@@ -11,7 +11,7 @@ set :user, "deploy"
 set :executable_file, "server.js"
 set :keep_releases, 5
 
-role :app, "54.235.15.124"
+role :app, "b.rolechat.com"
 
 namespace :deploy do
   task :start do ; end
