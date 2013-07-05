@@ -65,7 +65,9 @@ io.sockets.on('connection', function (socket) {
         socket.leave(data.channel); 
     });
     socket.on('send', function (data) {
-        channels[data.channel].sendMessage(data);
+        if (channels[data.channel]) {
+            channels[data.channel].sendMessage(data);
+        }
     });
 });
 
