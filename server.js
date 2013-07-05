@@ -83,7 +83,8 @@ io.sockets.on('connection', function (socket) {
         var channel = channels[data.channel];
         var player = new Player({
             name : data.name,
-            userId : data.userId
+            userId : data.userId,
+            socket : socket
         });
         channel.appendChild(player);
         channel.sendMessage({message : player.name + ' is on the game'})
