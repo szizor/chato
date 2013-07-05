@@ -28,37 +28,47 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
 
     prototype : {
 
+        selectedRoom : null,
+        selectedRole : null,
+
         init : function (args) {
             var _this = this;
             Chato.UI.Widget.prototype.init.apply(this, [args]);
             socket.on("channels", function(data){
-              console.log(data);
+              _this.fillSelect(data.channels);
             });
 
-            window.onload = function(){
+            
+            this.refresh();
+
+        },
+
+        fillSelect : function fillSelect (roomData) {
+              var _this = this;
+              //window.onload = function(){
               var roomSelect = document.getElementById('select_unselect');
               var rolesSelect = document.getElementById('roles');
-              
-              var myJSON = '[\
-                              {"room": {"id" : "1", "name" : "fringe", "roles": ["walter", "olivia", "fbi"]}},\
-                              {"room": {"id" : "2", "name" : "superheroes", "roles": ["superman", "batman", "ironman"]}}\
-                            ]';
-              var rooms = JSON.parse(myJSON);
+              //console.log(roomData);
+              //var myJSON = '[\
+              //               {"room": {"id" : "1", "name" : "fringe", "roles": ["walter", "olivia", "fbi"]}},\
+              //              {"room": {"id" : "2", "name" : "superheroes", "roles": ["superman", "batman", "ironman"]}}\
+              //            ]';
+              var rooms = JSON.parse(JSON.stringify(roomData));
    
               for(var i = 0; i < rooms.length; i++) {
                   var opt = document.createElement('option');
-                  opt.innerHTML = rooms[i].room.name;
-                  opt.value = rooms[i].room.name;
+                  opt.innerHTML = rooms[i].name;
+                  opt.value = rooms[i].name;
                   roomSelect.appendChild(opt);
               }
 
               document.getElementById('select_unselect').selectedIndex = -1;
 
               $('#select_unselect').change(function() {
-                  var roomName = this.options[this.selectedIndex].text;
+                  _this.selectedRoom = this.options[this.selectedIndex].text;
                   for(var i = 0; i < rooms.length; i++) {
-                      if (roomName == rooms[i].room.name) {
-                          var roles = rooms[i].room.roles;
+                      if (_this.selectedRoom == rooms[i].name) {
+                          var roles = rooms[i].roles;
                           $('#roles > option').remove();
                           for(var j = 0; j < roles.length; j++) {
                               var opt = document.createElement('option');
@@ -74,13 +84,13 @@ Class(Chato.UI, 'RoomSelect').inherits(Chato.UI.Widget)({
               });
               $('#roles').change(function() {
                   $('.select-button').show();
+                  _this.selectedRole = this.options[this.selectedIndex].text;
               });
               $(".btn-play").click(function() {
+
                 console.log('call to room');
               });
-            }//win
-            this.refresh();
-
+            //}//win
         },
 
         destroy : function destroy () {
