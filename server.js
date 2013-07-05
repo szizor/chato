@@ -53,8 +53,7 @@ app.get('/login', function(req, res){
 var io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
-    console.log(socket.id);
-    clients[socket.id] = socket;
+    console.log('socketid: ' + socket.id);
     socket.emit('message', { message: 'Welcome to text adventurers' });
 
     socket.on('create', function (data) {
@@ -113,7 +112,7 @@ io.sockets.on('connection', function (socket) {
           password : data.passwd
         })
         users[user.id] = user;
-        io.sockets.emit('response', "ok", user.id);
+        socket.emit('response', "ok", user.id);
       } else {
         io.sockets.emit('response', "error");
       }
@@ -122,9 +121,9 @@ io.sockets.on('connection', function (socket) {
     socket.on('login', function (data) {
       var valid = User.auth(data);
       if (valid) {
-        io.sockets.emit('auth', "ok");
+        socket.emit('auth', "ok");
       } else {
-        io.sockets.emit('auth', "error");
+        socket.emit('auth', "error");
       }
     });
 });
