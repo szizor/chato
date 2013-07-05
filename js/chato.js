@@ -1,2 +1,0 @@
-var Chato = {};
-Chato.UI = {};
