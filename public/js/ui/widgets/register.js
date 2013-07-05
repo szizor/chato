@@ -44,7 +44,22 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
             });
 
             this.done.bind('click', function (ev) {
-                _this.validateInputs();
+                var valid = _this.validateInputs();
+                if ( valid ) {
+                    socket.emit('register', {
+                        passwd  : _this.password[0].value,
+                        username: _this.username[0].value
+                    });
+                }
+            });
+
+            socket.on('response', function (data, id) {
+                if ( data == "ok" ) {
+                    alert("register ok")
+                    // TODO : redirect to main page
+                } else {
+                    alert("The username is in use");
+                }
             });
         },
 
@@ -65,9 +80,11 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
 
             if ( pass ) {
                 console.log("send form");
+                return true;
+            } else {
+                console.log("not send  form");
+                return false;
             }
-
-            return this;
         },
 
         destroy : function destroy () {
