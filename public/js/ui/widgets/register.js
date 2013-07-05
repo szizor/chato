@@ -1,25 +1,24 @@
 Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
 
     html : '<div class="register-screen screen">\
-              <div class="container">\
-                <header class="flex">\
-                  <a href="#" class="back prev btn auto">Welcome</a>\
-                  <h3 class="title auto">Register</h3>\
-                  <a href="#" class="done next btn btn-success auto">Done</a>\
-                </header>\
-                <div class="screen-body">\
-                  <form action="">\
-                    <div class="control-group">\
-                      <span class="fui-user"></span>\
-                      <input type="email" value="" placeholder="Username" class="span3 username">\
+                <div class="container">\
+                    <header class="flex">\
+                        <a href="#" class="back prev btn auto">Go Back</a>\
+                        <h3 class="title auto">Register</h3>\
+                        <a href="#" class="done next btn btn-success auto">Done</a>\
+                    </header>\
+                    <div class="screen-body">\
+                        <div class="error palette-alizarin"></div>\
+                        <div class="control-group">\
+                            <span class="fui-user"></span>\
+                            <input type="email" value="" placeholder="Username" class="span3 username">\
+                        </div>\
+                        <div class="control-group">\
+                            <span class="fui-lock"></span>\
+                            <input type="password" value="" placeholder="Password" class="span3 password">\
+                        </div>\
                     </div>\
-                    <div class="control-group">\
-                      <span class="fui-lock"></span>\
-                      <input type="password" value="" placeholder="Password" class="span3 password">\
-                    </div>\
-                  </form>\
                 </div>\
-              </div>\
             </div>\
             ',
 
@@ -32,6 +31,7 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
             this.done = this.element.find('.done');
             this.username = this.element.find('.username');
             this.password = this.element.find('.password');
+            this.error = this.element.find('.error');
 
             this.bindEvents();
         },
@@ -44,6 +44,7 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
             });
 
             this.done.bind('click', function (ev) {
+                ev.preventDefault();
                 var valid = _this.validateInputs();
                 if ( valid ) {
                     socket.emit('register', {
@@ -55,10 +56,13 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
 
             socket.on('response', function (data, id) {
                 if ( data == "ok" ) {
-                    alert("register ok")
-                    // TODO : redirect to main page
+                    console.log("register ok")
+                    _this.parent.roomSelect.element.addClass('show');
                 } else {
-                    alert("The username is in use");
+                    _this.error.text("The username is in use").addClass('show');
+                    var t = setTimeout(function() {
+                        _this.error.removeClass('show');
+                    }, 2000);
                 }
             });
         },

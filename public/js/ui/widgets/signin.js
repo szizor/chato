@@ -3,7 +3,7 @@ Class(Chato.UI, 'SignIn').inherits(Chato.UI.Widget)({
     html : '<div class="sign-in-screen screen">\
               <div class="container">\
                 <header class="flex">\
-                  <a href="#" class="back prev btn auto">Welcome</a>\
+                  <a href="#" class="back prev btn auto">Go Back</a>\
                   <h3 class="title auto">Sing In</h3>\
                   <a href="#" class="done next btn btn-success auto">Sing In</a>\
                 </header>\

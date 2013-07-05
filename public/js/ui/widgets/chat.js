@@ -1,4 +1,37 @@
 Class(Chato.UI, 'Chat').inherits(Chato.UI.Widget)({
+
+    html : '<div class="row chat container">\
+                <div class="span5 offset7">\
+                    <div class="information row">\
+                        <header>\
+                            <h1>Current conversation</h1>\
+                        </header>\
+                    </div>\
+                    <div class="conversation row container">\
+                    </div>\
+                    <div class="chat-controls row">\
+                        <div class="span3">\
+                            <input type="text" class="user-input-message" placeholder="What\'d you do?">\
+                        </div>\
+                        <div class="span2">\
+                            <button class="btn btn-mini btn-primary send-button" type="button"><span class="fui-check"></span></button>\
+                            <button class="btn btn-mini cancel-button" type="button"><span class="fui-cross"></span></button>\
+                        </div>\
+                    </div>\
+                    <div class="user-information row">\
+                        <div class="span4">\
+                            <p class="text-left">\
+                                <strong class="user-name">Pepito</strong>\
+                                <span class="user-score">500 pts.</span>\
+                            </p>\
+                        </div>\
+                        <div class="span1">\
+                            <button class="btn btn-mini btn-info" type="button"><span class="fui-user"></span></button>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>',
+
     prototype: {
 
         init: function (attributes) {
