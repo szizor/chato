@@ -308,21 +308,21 @@ textarea {
 
 .page-container  { 
     border: 1px solid #999;
-    /*box-shadow: inset 0px 0px 100px #999; */
-    width: 440px;
+    /*box-shadow: inset 0px 0px 100px #999; 
+    width: 440px;*/
     padding: 20px;
 }
 .page-content  { 
     margin: 0 auto;
-    width: 240px;
+    width: 220px;
     text-align: center;
 }
-
-.logo {
+.page-content select { width: 100%; }
+.chato-logo {
     margin-bottom: 20px;
 }
-.logo img{ width: 50px; height: 50px; margin-bottom: 5px; }
-.logo dl { padding: 5px;}
+.chato-logo img{ width: 50px; height: 50px; margin-bottom: 5px;}
+.chato-logo dl { padding: 5px;}
 .disabled{opacity: .3; pointer-events: none;}
 .select-button{display: none; margin-top: 15px;}
 
