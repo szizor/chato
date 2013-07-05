@@ -4,7 +4,7 @@ var port = 8080;
 users = {};
 channels = {};
 
-var getuid = (function generateUid() {
+getuid = (function generateUid() {
             var getUid = function(length){
                 var i, uid, min, max;
 
@@ -46,13 +46,28 @@ app.get("/", function(req, res){
 io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
-    socket.join('123');
     socket.emit('message', { message: 'welcome to the chat' });
+    socket.on('create', function (data) {
+        var channel = new Channel({
+            name : data.channel,
+            theme : 'this is a random channel',
+            roles : ['batman', 'joker']
+        });
+        channels[channel.name] = channel;
+        socket.join(channel.name);
+        channel.sendMessage({message : 'channel ' + channel.name + ' created'})
+    });
+    socket.on('join', function (data) {
+        socket.join(data.channel);
+        channel.sendMessage({message : 'entered ' + channel.name})
+    });
+    socket.on('leave', function (data) {
+        socket.leave(data.channel); 
+    });
     socket.on('send', function (data) {
-        console.log(channels[data.channelId]);
-        channels[data.channelId].sendMessage(data);
-//        io.sockets.emit('message', data);
-        //io.sockets.in('123').emit('message', data);
+        if (channels[data.channel]) {
+            channels[data.channel].sendMessage(data);
+        }
     });
 });
 
