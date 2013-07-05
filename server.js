@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var port = 5000;
-var users = {};
+var users = {}, channels = {};
 
 var getuid = (function generateUid() {
             var getUid = function(length){
@@ -41,12 +41,10 @@ var io = require('socket.io').listen(app.listen(port));
 io.sockets.on('connection', function (socket) {
     socket.emit('message', { message: 'welcome to the chat' });
     socket.on('send', function (data) {
+        channels[data.channelId].sendMessage(data);
         io.sockets.emit('message', data);
     });
 });
 
-io.sockets.on('action', function (socket) {
-    console.log('action received');
-});
 
 console.log('listening on port:' + port);
