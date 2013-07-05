@@ -1,6 +1,5 @@
 set :application, "chato"
 set :repository,  "git@github.com:freshout-dev/chato.git"
-set :branch, "teamb"
 
 set :deploy_to, "/home/deploy/chato"
 set :scm, :git
@@ -8,21 +7,20 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 set :use_sudo, false
 set :user, "deploy"
-set :executable_file, "server.js"
-set :keep_releases, 5
+set :executable_file, "index.js"
 
-role :app, "b.rolechat.com"
+role :app, "ec2-54-242-20-157.compute-1.amazonaws.com"
 
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     begin
-      run "cd #{release_path} && sudo forever stop #{executable_file}"
+      run "cd #{release_path} && forever stop #{executable_file}"
     rescue
     end
 
-    run "cd #{release_path} && sudo forever start #{executable_file}"
+    run "cd #{release_path} && forever start #{executable_file}"
   end
 end
 
@@ -36,12 +34,11 @@ namespace :npm do
   task :install, :roles => :app do
     npm.create_symlink
     shared_dir = File.join(shared_path, 'node_modules')
-    run "cd #{release_path} && npm install >> npm_install.log 2>&1"
+    run "cd #{release_path} && npm install"
   end
 end
 
+
 after "deploy:update_code" do
   npm.install
-  deploy.restart
-  deploy.cleanup
 end
