@@ -72,3 +72,5 @@ body {height: 100%; padding: 0; overflow: hidden}
   .sign-in-screen .control-group {position: relative}
     .sign-in-screen .control-group span {position: absolute; top: 13px; width: 40px; text-align: center; height: 100%; z-index: 1}
     .sign-in-screen .control-group input {padding: 20px 0 20px 30px}
+
+.user-message-controls {display: none}
