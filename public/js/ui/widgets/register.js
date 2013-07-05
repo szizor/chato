@@ -60,6 +60,7 @@ Class(Chato.UI, 'Register').inherits(Chato.UI.Widget)({
                     _this.parent.roomSelect.element.eq(0).addClass('show');
                     // _this.element.removeClass('show');
                     window.userID = data.userId;
+                    _this.element.removeClass('show');
                 } else {
                     _this.error.text("The username is in use").addClass('show');
                     var t = setTimeout(function() {
