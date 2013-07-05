@@ -71,7 +71,7 @@ io.sockets.on('connection', function (socket) {
         channel.sendMessage({message : 'entered ' + channel.name})
     });
     socket.on('leave', function (data) {
-        socket.leave(data.channel); 
+        socket.leave(data.channel);
     });
     socket.on('send', function (data) {
         if (channels[data.channel]) {
@@ -86,7 +86,7 @@ io.sockets.on('connection', function (socket) {
           password : data.passwd
         })
         users[user.id] = user;
-        io.sockets.emit('response', "ok");
+        io.sockets.emit('response', "ok", user.id);
       } else {
         io.sockets.emit('response', "error");
       }

@@ -7,19 +7,19 @@ window.onload = function() {
   var name = document.getElementById("name");
   var pass = document.getElementById("pass");
 
-  socket.on('response', function (data) {
+  socket.on('response', function (data, id) {
     if (data == "ok") {
       alert("register ok")
-      window.location.href = "/";
+      window.location.href = "/?id=" + id;
     } else {
       alert("The username is in use");
     }
   });
-  socket.on('auth', function (data) {
+  socket.on('auth', function (data, id) {
     console.log(data);
     if (data == "ok") {
       alert("login ok")
-      window.location.href = "/";
+      window.location.href = "/?id=" + id;
     } else {
       alert("The username or password is wrong");
     }
