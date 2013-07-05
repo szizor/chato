@@ -126,6 +126,19 @@ io.sockets.on('connection', function (socket) {
         socket.emit('auth', "error");
       }
     });
+
+    socket.on('channels', function (data) {
+        var result = {};
+        Object.keys(channels).forEach(function (id) {
+            result[id] = {
+                id : channels[id].id,
+                name : channels[id].name,
+                theme : channels[id].theme,
+                roles : channels[id].roles
+            };
+        });
+        socket.emit('channels', result);        
+    });
 });
 
 
