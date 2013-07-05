@@ -7,9 +7,9 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 set :use_sudo, false
 set :user, "deploy"
-set :executable_file, "index.js"
-
-role :app, "ec2-54-242-20-157.compute-1.amazonaws.com"
+set :executable_file, "server.js"
+set :branch, "teamb"
+role :app, "b.rolechat.com"
 
 namespace :deploy do
   task :start do ; end
@@ -41,4 +41,5 @@ end
 
 after "deploy:update_code" do
   npm.install
+  deploy.restart
 end
