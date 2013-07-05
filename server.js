@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var port = 5000;
+var users = {};
 
 BASE_PATH = process.cwd();
 
@@ -19,6 +20,10 @@ io.sockets.on('connection', function (socket) {
     socket.on('send', function (data) {
         io.sockets.emit('message', data);
     });
+});
+
+io.sockets.on('action', function (socket) {
+    console.log('action received');
 });
 
 console.log('listening on port:' + port);
