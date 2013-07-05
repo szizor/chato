@@ -120,16 +120,16 @@ io.sockets.on('connection', function (socket) {
           password : data.passwd
         })
         users[user.id] = user;
-        socket.emit('response', "ok", user.id);
+        socket.emit('response', {type : 'ok', userId : user.id});
       } else {
-        io.sockets.emit('response', "error");
+        socket.emit('response', {type : 'error'});
       }
     });
 
     socket.on('login', function (data) {
-      var valid = User.auth(data);
-      if (valid) {
-        socket.emit('auth', "ok");
+      var user = User.auth(data);
+      if (user) {
+        socket.emit('auth', {type : 'ok', userId : user.id});
       } else {
         socket.emit('auth', "error");
       }

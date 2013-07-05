@@ -56,11 +56,11 @@ Class(Chato.UI, 'SignIn').inherits(Chato.UI.Widget)({
             });
 
             socket.on('auth', function (data, id) {
-                if ( data == "ok" ) {
+                if ( data.type == "ok" ) {
                   // TODO : redirect to main page
                   _this.parent.roomSelect.element.addClass('show');
                   _this.element.removeClass('show');
-                  window.userID = id;
+                  window.userID = data.userId;
                 } else {
                   _this.error.text("The username or password is wrong").addClass('show');
                     var t = setTimeout(function() {
