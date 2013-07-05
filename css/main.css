@@ -302,3 +302,26 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+
+/**************** chato *******************/
+
+.page-container  { 
+    border: 1px solid #999;
+    box-shadow: inset 0px 0px 100px #999; 
+    width: 440px;
+    padding: 20px;
+}
+
+.page-content  { 
+    margin: 0 auto;
+    width: 240px;
+    text-align: center;
+}
+
+.logo {
+    border: 1px solid #333;
+    background: #999;
+    margin-bottom: 20px;
+}
+
