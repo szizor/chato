@@ -59,6 +59,7 @@ app.use(express.static(__dirname + '/public'));
 io = require('socket.io').listen(app.listen(port));
 
 io.sockets.on('connection', function (socket) {
+
     console.log('socketid: ' + socket.id);
     socket.emit('message', { message: 'Welcome to text adventurers' });
 
