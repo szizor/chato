@@ -137,7 +137,7 @@ io.sockets.on('connection', function (socket) {
                 roles : channels[id].roles
             });
         });
-        socket.emit('channels', {channels : []});        
+        socket.emit('channels', {channels : result});        
     });
 });
 
